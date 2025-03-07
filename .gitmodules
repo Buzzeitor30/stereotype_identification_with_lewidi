@@ -1,0 +1,6 @@
+[submodule "EXIST-TFM"]
+	path = EXIST-TFM
+	url = https://github.com/Buzzeitor30/EXIST-TFM
+[submodule "DETESTS-DIS"]
+	path = DETESTS-DIS
+	url = https://github.com/Buzzeitor30/DETESTS-DIS
