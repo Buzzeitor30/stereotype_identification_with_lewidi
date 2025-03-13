@@ -1,0 +1,56 @@
+\section{Conclusions and future work}
+
+
+\begin{frame}{Conclusions}
+\begin{itemize}
+    \item \textbf{RQ1}:
+    \begin{itemize}
+        \item Competitive results
+        \item LeWiDi models achieve better results
+        \item LeWiDi models generalize better
+        \item Insights into the flaws of the multi-task approach
+        \item Context and data augmentation
+        \item Fine-tuning strategy
+        \item Difficulty of the implicit detection task 
+    \end{itemize} 
+    \item \textbf{RQ2}:
+    \begin{itemize}
+        \item Competitive results, even surpassing SOTA results
+        \item Text $\textgreater$ Image
+        \item Importance of text description
+        \item LeWiDi models offer better generalization
+        \item Image-text relation in memes is very complex.
+    \end{itemize}
+\end{itemize}   
+\end{frame}
+
+\begin{frame}{Future work (and some tips for EXIST 2025...)}
+    \begin{itemize}
+        \item On BERT fine-tuning:
+        \begin{itemize}
+            \item Intermediate tasks for boosting performance
+            \item Fine-tuned models on HF from similar tasks
+            \item Re-init BERT layers
+        \end{itemize}
+        \item Stereotype on multimodal detection: 
+        \begin{itemize}
+            \item \textbf{External features are important, but so are the selected models}
+            \item Image/video description: \textbf{Qwen2.5 VL, GPT-like, SmolVLM2, Llama3.2 11B, Gemma 3}
+            \item Image features: \textbf{YOLO, Faster R-CNN, EfficientNet}
+            \item Improve text-image alignment
+        \end{itemize} 
+        \item LLM's
+        \begin{itemize}
+            \item Data augmentation
+            \item Few-shot
+            \item Provide explanations
+        \end{itemize}
+        \item Alternatives approaches for LeWiDi:
+        \begin{itemize}
+            \item \textbf{Multi-task} with \textbf{hard and soft labels} 
+            \item Perspectivist approach in EXIST with clustering and demographic information
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+

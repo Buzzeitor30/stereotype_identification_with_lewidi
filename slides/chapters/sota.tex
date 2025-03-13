@@ -1,0 +1,87 @@
+\section{Estado del Arte}
+%TEXTO
+\begin{frame}{Clasificaci\'on con modelos de texto}
+
+   \begin{itemize}
+    \item \textit{Transformer encoder} preentrenado: \textit{Robustly optimized BERT approach} (RoBERTa) \footfullcite{liu2019robertarobustlyoptimizedbert}
+    \item \textit{Fine-tuning} junto con \textit{token} especial para la  clasificaci\'on ([CLS])
+    \item Modelo monoling\"ue preferible a uno multiling\"ue
+    \item Tareas destacables: EXIST, DETESTS, AMI (\textit{Automatic Misogyny Identification})
+\end{itemize}
+\end{frame}
+
+%MULTIMODAL
+\begin{frame}{Clasificaci\'on con modelos multimodales}
+    \begin{itemize}
+        \item \textit{Early Fusion}: Fusionar modalides de arquitecturas unimodales a trav\'es de alg\'un mecansimo
+        \item Modelos preentrenados orientados a alinear texto e imagen:
+        \begin{itemize}
+            \item CLIP (\textit{Contrastive Language-Image Pre-Training})
+            \item VisualBERT
+            \item FLAVA (\textit{Foundation Language And Vision Alignment})
+        \end{itemize}
+        \item Texto $\gg$ Imagen  para los memes 
+        \item Tareas destacables: MAMI (Multimedia Automatic Misogyny Identification), Hateful Memes Challenge
+    \end{itemize}
+\footfullcite{aggarwal-etal-2024-text}
+\end{frame}
+
+%LeWiDi
+\begin{frame}{LeWiDi}
+\begin{itemize}
+    \item Enfoque cl\'asico: 
+    \begin{itemize}
+        \item Asumir la existencia de una verdad absoluta
+        \item Votaci\'on mayoritaria o m\'etodos probabil\'isticos
+        \item Mejor para la evaluaci\'on \textit{hard}
+    \end{itemize}
+    \item Enfoque perspectivista:
+    \begin{itemize}
+        \item Modelar las anotaciones individuales
+        \item \textit{Ensemble}, \textit{multi-label} y \textbf{\textit{multi-task}}
+    \end{itemize}
+    \item Enfoque \textit{soft loss}: 
+    \begin{itemize}
+        \item Agregar las anotaciones en una distribuci\'on: \textit{Softmax} o emp\'irica 
+        \item $\mathcal{L}$: \textbf{\textit{Cross Entropy}}, Kullback-Leibler y \textit{Minimum Square Error}
+        \item Enfoque que m\'as generaliza
+    \end{itemize}
+\end{itemize}
+\footfullcite{lewidi_survey}
+\end{frame}
+
+\begin{frame}{M\'etricas}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \centering
+        \textbf{Evaluaci\'on \textit{hard}}
+        \vspace{0.25cm}
+        \begin{itemize}
+            \item $F_1$ \textit{score}:
+            $$ F_1 =  2\frac{P \cdot R}{P + R} $$
+            \item \textit{Information Contrast Metric} (ICM) 
+            \begin{align*}
+                ICM(A, B) &= \alpha_1IC(A) + \alpha_2IC(B) \\
+                          &- \beta IC(A \cup B) \\
+                IC(A) &= -\log_2P(A)
+            \end{align*}
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \centering
+        \textbf{Evaluaci\'on \textit{soft}}
+        \vspace{0.25cm}
+        \begin{itemize}
+            \item \textit{Cross Entropy}
+            \begin{align*}
+                CE(p, q) = - \sum_{x \in \mathcal{X}} p(x) \log_2q(x)
+            \end{align*}
+            \item \textit{ICM Soft}: ICM adaptada para distribuciones de probabilidad
+            $$
+            IC(\{c_i, v_i\}) = -log_2(P(\mathcal{I}_c \geq v))
+            $$
+        \end{itemize}
+    
+    \end{columns}
+    \footfullcite{amigo-delgado-2022-evaluating}
+\end{frame}

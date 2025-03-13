@@ -1,0 +1,117 @@
+\begin{frame}{ICM}
+    \only<1>{
+        \begin{itemize}
+            \item Formula:
+            $$
+            ICM(A, B)= 2IC(A) + 2IC(B) - 3IC(A \cup B)
+            $$
+            \item \textit{Information Content} of one category:
+            \begin{align*}
+                IC(c_i) &= -\log_2(P(c_i)) \\
+                &\simeq -\log_{2} \left(\frac{|\bigcup_{c' \in \{c\} \cup \text{Desc}(c')} \mathcal{I}_{c'}|}{|\bigcup_{c' \in \mathcal{C}} \mathcal{I}_{c'}|}\right)
+            \end{align*}
+            \item IC of a set of categories:
+            \begin{align*}
+                IC(\{c_i\} \cup \{c_j\}) &= IC(c_i) + IC(c_j) - IC(\{c_i\} \cap \{c_j\}) \\
+                &= IC(c_i) + IC(c_j) - IC(\text{lso}(c_i, c_j))
+            \end{align*}
+        \end{itemize}
+    }
+
+    \only<2>{
+        \begin{columns}[T]
+            \column{0.3\textwidth}
+            \begin{itemize}
+                \item Email:
+                \begin{itemize}
+                    \item Spam (S)
+                    \begin{itemize}
+                        \item Scam (SC)
+                        \item Viajes (TR)
+                    \end{itemize}
+                    \item NoSpam (NS)
+                \end{itemize}
+            \end{itemize}
+
+            \column{0.5\textwidth}
+            \begin{table}[]
+                \centering
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                    \textbf{ID} & \textbf{TRUTH} & \textbf{PRED} \\ \hline
+                    1 & NS & NS \\ \hline
+                    2 & TR, SC & TR \\ \hline
+                    3 & SC & NS \\ \hline
+                    4 & NS & NS \\ \hline
+                    5 & TR & SC \\ \hline
+                    6 & NS & NS \\ \hline
+                    7 & NS & NS \\ \hline
+                \end{tabular}
+            \end{table}
+        \end{columns}
+    }
+
+    \only<3>{
+        \begin{itemize}
+            \item A prioris:
+            \begin{align*}
+                P(\text{NS}) &= \frac{4}{7} \approx 0.571 \\
+                P(\text{S}) &= \frac{3}{7} \approx 0.429 \\
+                P(\text{SC}) &= P(\text{TR}) = \frac{2}{7} \approx 0.2857 \\
+            \end{align*}
+            \item IC:
+            \begin{align*}
+                IC(\text{NS}) &= - \log_2 P(\text{NS}) = - \log_2 0.571 \approx 0.80 \\
+                IC(\text{S}) &= - \log_2 P(\text{S}) = - \log_2 0.429 \approx 1.22 \\
+                IC(\text{SC}) &= IC(\text{TR}) = - \log_2 0.2857 \approx 1.80
+            \end{align*}
+        \end{itemize}
+    }
+
+    \only<4>{
+        \begin{itemize}
+            \item ID 1, 4, 6, 7:
+            \begin{align*}
+                ICM(\text{NS}, \text{NS}) &= 2IC(\text{NS}) + 2IC(\text{NS}) - 3IC( \{\text{NS}\} \cup \{\text{NS}\}) \\
+                &= 4IC(\text{NS}) - 3IC( \text{NS}) = IC(\text{NS}) \\
+                &= 0.80
+            \end{align*}
+            \item ID 2:
+            \begin{align*}
+                IC(\{\text{TR, SC}\}, \{\text{TR}\}) &= 2IC(\{\text{TR, SC}\}) + 2IC(\{\text{TR}\}) - 3IC(\{\text{TR, SC}\}) \\
+                &= 2IC(\{\text{TR}\}) - IC(\{\text{TR, SC}\})\\
+                &= 2 \cdot 1.8 - 2.38 = 1.22
+            \end{align*}
+            \begin{align*}
+                IC(\{\text{TR, SC}\}) &= IC(\text{TR}) + IC(\text{SC}) - IC(\text{lso}(\text{TR}, \text{SC})) \\
+                &= IC(\text{TR}) + IC(\text{SC}) - IC(\text{S}) \\
+                &= 1.80 + 1.80 - 1.22 = 2.38
+            \end{align*}
+        \end{itemize}
+    }
+
+    \only<5>{
+        \begin{itemize}
+            \item ID 3:
+            \begin{align*}
+                ICM(\text{SC}, \text{NS}) &= 2IC(\text{SC}) + 2IC(\text{NS}) - 3IC(\{\text{SC}\} \cup \{\text{NS}\}) \\
+                &= 2\cdot1.8 + 2\cdot0.8 - 3\cdot2.6 = -2.6
+            \end{align*}
+            \begin{align*}
+                IC(\{\text{SC}, \text{NS}\}) &= IC(\text{SC}) + IC(\text{NS}) - IC(\text{lso}(\text{SC}, \text{NS})) \\
+                &= 1.80 + 0.80 - 0 = 2.6
+            \end{align*}
+            \item ID 5:
+            \begin{align*}
+                ICM(\text{SC}, \text{TR}) &= 2IC(\text{SC}) + 2IC(\text{TR}) - 3IC(\{\text{SC}, \text{TR}\}) \\
+                &= 2\cdot1.80 + 2\cdot1.80 - 3\cdot2.38 = 0.06
+            \end{align*}
+        \end{itemize}
+    }
+    \only<6>{
+        Average ICM:
+        \begin{align*}
+            \frac{4 \cdot 0.8 + 1.22 - 2.6 + 0.06}{7} \approx 0.2685
+        \end{align*}
+    }
+\end{frame}

@@ -1,0 +1,54 @@
+\section{LeWiDi}
+\begin{frame}{LeWiDi: Why?}
+\begin{itemize}
+    \item Supervised tasks require annotated data
+    \item Data annotation is a time-consuming and expensive process
+    \item Assumption: existence of a single, objective truth
+    \item Reality: disagreements often arise
+    \item Reasons
+    \begin{itemize}
+        \item Mistakes/slips from the annotators
+        \item Poor annotation schemes
+        \item \textbf{Subjectivity}
+        \item ...
+    \end{itemize}
+    \item Why would we ignore the minority over the majority?
+\end{itemize}
+\footfullcite{lewidi_survey}
+\end{frame}
+%Include examples
+
+\begin{frame}{LeWiDi: Beyond black and white}
+\begin{itemize}
+    \item Aggregate annotations into a gold truth (\textbf{hard label})
+    \begin{itemize}
+        \item Majority voting (traditional approach)
+        \item Probabilistic methods: MACE 
+    \end{itemize}
+    \item Ignore ``difficult`` labels by using disagreement
+    \item Aggregate annotations into a probability distribution (\textbf{soft label})
+    \begin{itemize}
+        \item Probability or softmax
+        \item Soft loss function (\textbf{CE}, KL or MSE)
+    \end{itemize}
+    \item Combine information from \textbf{hard} and \textbf{soft} labels
+    \item Perspectivist: work directly with non-aggregated annotations
+\end{itemize}
+\footfullcite{lewidi_survey,Frenda2024}
+ \end{frame}
+
+\begin{frame}{LeWiDi: Evaluation}
+    \begin{itemize}
+        \item Hard evaluation: Traditional evaluation using hard labels
+        \begin{itemize}
+            \item Common metrics: F1-Score, Accuracy, Information Contrast Metric (ICM)
+            \item Traditional approach usually works the best
+            \item Soft loss can be better under certain conditions
+        \end{itemize}
+        \item Soft evaluation: How well does the model generalize
+        \begin{itemize}
+            \item Common metrics: CE, JSD, KL, ICM Soft
+            \item Soft loss works the best
+        \end{itemize}
+    \end{itemize}
+\end{frame}

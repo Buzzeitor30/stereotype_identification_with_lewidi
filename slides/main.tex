@@ -1,0 +1,120 @@
+\documentclass[10pt]{beamer}
+
+%Paquetes
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{babel}
+
+\usepackage{svg}
+\usepackage{adjustbox}
+\usepackage{textcomp}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage[autocite=footnote,backend=biber, maxnames=3]{biblatex}
+\usepackage{tabularx}
+\usepackage{epstopdf}
+%Bibliografía
+\addbibresource{refs.bib}
+%Tema
+\usetheme[compress]{Berlin}
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+%Título:
+\title{Identification of Racial and Sexist Stereotypes in Spanish}
+\subtitle{A Learning with Disagreements Approach \\ \small{In: Procesamiento del Lenguaje Natural (SEPLN), num. 74 (accepted)}}
+\author[Elias Urios Alacreu]{Elias Urios Alacreu \inst{1} \and Paolo Rosso \inst{1,2}}
+\institute[shortinst]{\inst{1} PRHLT Research Center, Universitat Politècnica de València \\ \inst{2} ValgrAI Valencian Graduate School and Research Network of Artificial Intelligence}
+% Preamble
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[triangle]
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Index}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\titlegraphic{%
+  \makebox[\textwidth]{%  <-- The box with full width
+    \centering % Center the content within the box
+    \adjustbox{valign=c, width=1.5cm}{\includesvg{images/marca_UPV_secundaria_negro.svg}}%
+    \hspace{0.25cm} % Or your desired horizontal space
+    \adjustbox{valign=c, width=3cm}{\includegraphics{images/logoprhlt_mobil.png}}%
+  }%
+}
+
+\renewcommand\footfullcite[1]{%
+\begingroup
+\renewcommand\thefootnote{}\footnote{\fullcite{#1}}%
+\addtocounter{footnote}{-1}%
+\endgroup
+}
+
+
+
+
+\renewcommand{\footnotesize}{\scriptsize}
+
+\begin{document}
+
+%Índice general
+\frame{\titlepage}
+\begin{frame}
+\frametitle{Index}
+\tableofcontents
+\end{frame}
+
+
+%Introducción
+\include{chapters/intro}
+
+%leWiDi
+\include{chapters/lewidi.tex}
+
+%SOTA
+%\include{chapters/sota}
+%DETEST-DIS new
+\include{chapters/detests_dis}
+%DETESTS
+%\include{chapters/detests}
+
+%EXIST
+\include{chapters/exist}
+
+%Conclusiones
+\include{chapters/conclusiones}
+
+\appendix
+\begin{frame}{}
+    \begin{center}
+        \Huge Thanks for your attention!
+        
+        \Huge Any questions?
+    \end{center}
+    \adjustbox{valign=c, width=3cm}{\includegraphics{images/logoprhlt_mobil.png}}%
+    \hfill
+    \adjustbox{valign=c, width=1.5cm}{\includesvg{images/marca_UPV_secundaria_negro.svg}}%
+\end{frame}
+
+\include{chapters/apendix}
+
+\end{document}
